@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/host_rpm"
+        android:layout_width="460dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical" />
+
+    <FrameLayout
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:layout_below="@id/host_rpm"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:fontFamily="@font/seven_segment"
+            android:gravity="top|start"
+            android:paddingTop="2dp"
+            android:text="65"
+            android:textSize="100sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:text="Km/h"
+            android:textSize="22sp" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:id="@+id/trip_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="2:16 h"
+                android:textSize="20sp"
+                app:drawableTint="@color/white"
+                android:drawableLeft="@drawable/time_elapsed_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="Trip 68 km"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/distance_24"
+                app:drawableTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="avg. 50 km/h"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/baseline_speed_24"
+                app:drawableTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="Since start"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/trip_details"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="Approx. 14L | 245 Km available"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/baseline_local_gas_station_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="15.0 km/l"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/baseline_instant_graph_24"
+                android:paddingVertical="8dp"
+                android:text="Instant 15.0 km/l"
+                android:drawablePadding="8dp"
+                app:drawableTint="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawablePadding="8dp"
+                android:text="consumed 0.99 L"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/consumption_24"
+                app:drawableTint="@color/white" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
