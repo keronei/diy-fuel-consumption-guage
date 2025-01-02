@@ -1,24 +1,20 @@
 package com.keronei.kmlguage
 
-import android.content.Context
 import android.graphics.drawable.Drawable
+import android.hardware.usb.UsbDevice
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.SeekBar
-import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.keronei.kmlguage.databinding.ActivityMainBinding
-import me.aflak.arduino.Arduino
+import com.keronei.kmlgauge.databinding.ActivityMainBinding
+import com.keronei.kmlguage.Arduino.Arduino
+import com.keronei.kmlguage.Arduino.ArduinoListener
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ArduinoListener {
     var binding: ActivityMainBinding? = null
 
     val bind get() = binding!!
@@ -28,7 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        // val arduino = Arduino(this)
+        val arduino = Arduino(this)
+
+        arduino.setArduinoListener(this)
 
         val pb = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
         val d: Drawable = ProgressDrawable()
@@ -66,5 +64,29 @@ class MainActivity : AppCompatActivity() {
 
 // Start the repeating task
         handler.post(runnable)
+    }
+
+    override fun onArduinoAttached(device: UsbDevice?) {
+        bind.tripTime.setText("Attached!")
+
+    }
+
+    override fun onArduinoDetached() {
+        bind.tripTime.setText("Detached!")
+
+    }
+
+    override fun onArduinoMessage(bytes: ByteArray?) {
+        bind.tripDistance.setText("Received: ${bytes.toString()}")
+    }
+
+    override fun onArduinoOpened() {
+
+        bind.tripTime.setText("Opened!")
+
+    }
+
+    override fun onUsbPermissionDenied() {
+bind.tripTime.setText("No permission")
     }
 }

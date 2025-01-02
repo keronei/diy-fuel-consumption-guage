@@ -37,16 +37,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    namespace = "com.keronei.kmlgauge"
 }
 
 dependencies {
-    //implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    //implementation(libs.material)
-   // implementation(libs.androidx.activity)
-    //implementation(libs.androidx.constraintlayout)
+    implementation(libs.usbserial)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(files("libs/arduino-1.4.4.aar"))
 }

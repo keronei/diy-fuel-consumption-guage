@@ -53,6 +53,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/trip_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
@@ -63,6 +64,7 @@
                 android:drawableLeft="@drawable/time_elapsed_24" />
 
             <TextView
+                android:id="@+id/trip_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
