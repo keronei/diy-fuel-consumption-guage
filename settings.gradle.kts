@@ -24,5 +24,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "kmlguage"
-include(":app")
+include(":app", "usbSerialForAndroid")
  

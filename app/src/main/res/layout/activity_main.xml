@@ -22,9 +22,12 @@
         android:layout_centerHorizontal="true">
 
         <TextView
+            android:id="@+id/current_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/seven_segment"
             android:gravity="top|start"
             android:paddingTop="2dp"
@@ -56,32 +59,32 @@
                 android:id="@+id/trip_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/time_elapsed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
                 android:text="2:16 h"
                 android:textSize="20sp"
-                app:drawableTint="@color/white"
-                android:drawableLeft="@drawable/time_elapsed_24" />
+                app:drawableTint="@color/white" />
 
             <TextView
                 android:id="@+id/trip_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/distance_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
                 android:text="Trip 68 km"
                 android:textSize="20sp"
-                android:drawableLeft="@drawable/distance_24"
                 app:drawableTint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_speed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
                 android:text="avg. 50 km/h"
                 android:textSize="20sp"
-                android:drawableLeft="@drawable/baseline_speed_24"
                 app:drawableTint="@color/white" />
 
             <TextView
@@ -94,15 +97,55 @@
         </LinearLayout>
 
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/trip_details"
             android:layout_centerHorizontal="true"
-            android:drawablePadding="8dp"
-            android:padding="8dp"
-            android:text="Approx. 14L | 245 Km available"
-            android:textSize="14sp" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_thermostat_24"
+                    app:tint="@color/white" />
+
+                <ProgressBar
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:max="100"
+                    android:progress="33" />
+                <TextView
+                    android:text=" OK"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:textStyle="italic"
+                android:text="17.97L on tank - 245 km available"
+                android:textSize="14sp" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -133,11 +176,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:drawableLeft="@drawable/baseline_instant_graph_24"
+                android:drawablePadding="8dp"
                 android:paddingVertical="8dp"
                 android:text="Instant 15.0 km/l"
-                android:drawablePadding="8dp"
-                app:drawableTint="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:drawableTint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
