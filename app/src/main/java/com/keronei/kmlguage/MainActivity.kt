@@ -1,40 +1,48 @@
 package com.keronei.kmlguage
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.hardware.usb.UsbManager
-import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
-import com.hoho.android.usbserial.util.SerialInputOutputManager
 import com.keronei.kmlgauge.BuildConfig
+import com.keronei.kmlgauge.R
 import com.keronei.kmlgauge.databinding.ActivityMainBinding
-import java.util.Locale
-import kotlin.math.roundToInt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
-class MainActivity : AppCompatActivity(), SerialInputOutputManager.Listener {
+class MainActivity : AppCompatActivity() {
     var binding: ActivityMainBinding? = null
 
     private lateinit var locationManager: LocationManager
+
+    private var ioJob = CoroutineScope(Dispatchers.IO + Job())
 
     val bind get() = binding!!
 
     var port: UsbSerialPort? = null
 
-    var ioManager: SerialInputOutputManager? = null
+    var rpmGuage: ProgressBar? = null
 
     private enum class UsbPermission {
         Unknown, Requested, Granted, Denied
@@ -44,36 +52,37 @@ class MainActivity : AppCompatActivity(), SerialInputOutputManager.Listener {
 
     val INTENT_ACTION_GRANT_USB: String = BuildConfig.APPLICATION_ID + ".GRANT_USB"
 
-
     private var usbPermission = UsbPermission.Unknown
 
     private var broadcastReceiver: BroadcastReceiver? = null
+    private lateinit var gestureDetector: GestureDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-
-        val pb = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
+        rpmGuage = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
         val d: Drawable = ProgressDrawable()
-        pb.progressDrawable = d
-        //pb.setPadding(20, 10, 20, 0)
+        rpmGuage?.progressDrawable = d
 
-        val final = (510.toDouble() / 8000.0) * 100
+        rpmGuage?.let { bar ->
+            bind.hostRpm.addView(bar, 700, 160)
+        }
 
-        Log.d("RPM", "$final")
-
-
-        bind.hostRpm.addView(pb, 700, 160)
 
         setContentView(bind.root)
+        gestureDetector = GestureDetector(this, SwipeGestureListener())
 
         initiateUsb()
 
+        bind.main.setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+        }
+
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
-        listenToLocationUpdates()
+        //listenToLocationUpdates()
 
         broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
@@ -93,24 +102,83 @@ class MainActivity : AppCompatActivity(), SerialInputOutputManager.Listener {
             initiateUsb()
         }
 
+        handleEngineData()
     }
 
-    @SuppressLint("MissingPermission")
-    private fun listenToLocationUpdates() {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, {
-            location ->
-            val speed = location.speed
-            val kph = speed * 3.6f
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun handleEngineData() {
+        ioJob.launch {
+            USBDataHandler.incomingData.collectLatest { data ->
+                withContext(Dispatchers.Main) {
+                    data?.let {
+                        val finalRpm = (data.rpm.toDouble() / 8000.0) * 100
 
-            Log.d("LocationSpeed", "$kph")
+                        rpmGuage?.progress = finalRpm.toInt()
+                        bind.currentSpeed.text = data.instantSpeed.toString()
 
-            bind.currentSpeed.text = kph.roundToInt().toString()
-        })
+                        if (data.instantSpeed == 0) {
+                            bind.instantConsumption.text =
+                                if (data.currentConsumptionPerKm == 999999.0) {
+                                    "***"
+                                } else {
+                                    "Instant ${data.instantConsumptionPerHour} L/H"
+                                }
+                        } else {
+                            bind.instantConsumption.text =
+                                if (data.currentConsumptionPerKm == 999999.0) {
+                                    "***"
+                                } else {
+                                    "Instant ${data.instantConsumptionPerHour} Km/L"
+                                }
+                        }
+
+                        val remainingDistance = String.format(
+                            "%.1f",
+                            (data.approximateRemainingTank * data.currentConsumptionPerKm)
+                        )
+
+                        val remainingDistanceText = if(data.currentConsumptionPerKm == 999999.0){
+                            "No consumption info"
+                        } else {
+                            "$remainingDistance Km available"
+                        }
+
+                        bind.remainingOnTank.text =
+                            "${data.approximateRemainingTank}L on tank - $remainingDistanceText"
+
+                        bind.tripTime.text = "${data.currentTripTime} h"
+                        bind.averageSpeed.text = "avg. ${data.currentAverageSpeed} Km/h"
+                        bind.tripDistance.text = "Trip ${data.currentTripDistance} Km"
+                        bind.currentConsumption.text =
+                            if (data.currentConsumptionPerKm == 999999.0) {
+                                "***"
+                            } else {
+                                "${data.currentConsumptionPerKm} Km/l"
+                            }
+                        bind.totalConsumption.text = "Consumed ${data.currentConsumedLitres} L"
+                    }
+                }
+            }
+        }
     }
+
+
+//    @SuppressLint("MissingPermission")
+//    private fun listenToLocationUpdates() {
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, {
+//            location ->
+//            val speed = location.speed
+//            val kph = speed * 3.6f
+//
+//            Log.d("LocationSpeed", "$kph")
+//
+//            bind.currentSpeed.text = kph.roundToInt().toString()
+//        })
+//    }
 
     private fun initiateUsb() {
-        if (ioManager != null) {
-            ioManager?.stop()
+        if (USBDataHandler.ioManager != null) {
+            USBDataHandler.ioManager?.stop()
         }
 
         val usbManager = getSystemService(USB_SERVICE) as UsbManager
@@ -150,31 +218,53 @@ class MainActivity : AppCompatActivity(), SerialInputOutputManager.Listener {
 
         port = firstAvailableDriver.ports.first()
         port?.open(connection)
-        Log.d("Arduino-p", "All ports: ${firstAvailableDriver.ports}")
-
         port?.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
-        Log.d("Arduino-p", "Port: $port")
 
-        ioManager = port?.let { po -> SerialInputOutputManager(po, this) }
+        port?.let {
+            USBDataHandler.usbSerialPort = it
+        }
 
-        ioManager?.setReadTimeout(1000)
-
-        ioManager?.start()
-    }
-
-    override fun onNewData(data: ByteArray) {
-        val receivedString = java.lang.String(data, Charsets.UTF_8)
-        Log.d("Arduino-P", "$receivedString")
-    }
-
-    override fun onRunError(e: Exception) {
-        Log.d("Arduino-P", "Error registered")
-        e.printStackTrace()
+        USBDataHandler.initializeHandler()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        ioManager?.stop()
+        USBDataHandler.ioManager?.stop()
         port?.close()
+    }
+
+    private inner class SwipeGestureListener : GestureDetector.SimpleOnGestureListener() {
+
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            if (e1 == null) return false
+
+            val diffX = e2.x - e1.x
+            val swipeThreshold = 100
+            val swipeVelocityThreshold = 100
+
+            return if (Math.abs(diffX) > swipeThreshold && Math.abs(velocityX) > swipeVelocityThreshold) {
+                if (diffX > 0) {
+                    Toast.makeText(this@MainActivity, "Swiped Right", Toast.LENGTH_SHORT).show()
+                } else {
+                    this@MainActivity.startActivity(
+                        Intent(
+                            this@MainActivity,
+                            GuagesScreenActivity::class.java
+                        )
+                    )
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+                    Toast.makeText(this@MainActivity, "Swiped Left", Toast.LENGTH_SHORT).show()
+                }
+                true
+            } else {
+                false
+            }
+        }
     }
 }

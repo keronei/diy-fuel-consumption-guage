@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:gravity="center_horizontal"
+    android:focusable="true"
+    android:clickable="true"
+    tools:context="com.keronei.kmlguage.GuagesScreenActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_horizontal"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/remaining_in_tank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/soul_daisy"
+                android:text="16.5"
+                android:textSize="48sp"
+                app:drawableTint="#d83a78" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/soul_daisy"
+                android:text="Litres"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_local_gas_station_24"
+            app:tint="#d83a78" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="2dp"
+                android:fontFamily="@font/soul_daisy"
+                android:text="305"
+                android:id="@+id/remaining_distance_in_tank"
+                android:textSize="48sp"
+                app:drawableTint="#d83a78" />
+
+            <TextView
+                android:id="@+id/remaining_distance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/soul_daisy"
+                android:gravity="center"
+                android:text="Km \n Remaining"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.keronei.kmlguage.Speedometer
+        android:id="@+id/current_speed"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        app:borderColor="#402c47"
+        app:borderSize="24dp"
+        app:fillColor="#d83a78"
+        app:maxRpm="8000"
+        app:metricText="km/h"
+        app:textColor="#f5f5f5" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/current_lkm_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="2dp"
+                android:fontFamily="@font/soul_daisy"
+                android:text="16.5"
+                android:id="@+id/current_lkm"
+                android:textSize="48sp"
+                app:drawableTint="#d83a78" />
+
+            <TextView
+                android:id="@+id/current_consumption_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/soul_daisy"
+                android:text="Km/L"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_instant_graph_24"
+            app:tint="#d83a78" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="2dp"
+                android:fontFamily="@font/soul_daisy"
+                android:text="17.5"
+                android:id="@+id/instant_lkm"
+                android:textSize="64sp"
+                app:drawableTint="#d83a78" />
+
+            <TextView
+                android:id="@+id/instant_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/soul_daisy"
+                android:text="Km/L"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
