@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -46,12 +48,13 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(project(":usbSerialForAndroid"))
-    // implementation(libs.material)
+    implementation("com.google.firebase:firebase-analytics:17.0.0")
+    implementation("com.google.firebase:firebase-crashlytics:17.0.0")
     // implementation(libs.androidx.activity)
     // implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // androidTestImplementation(libs.androidx.junit)
+    // androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")

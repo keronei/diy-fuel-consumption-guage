@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:id="@+id/host_rpm"
-        android:layout_width="460dp"
-        android:layout_height="80dp"
+        android:layout_width="580dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:orientation="vertical" />
@@ -57,6 +57,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="match_parent"
+                app:tint="#12D41C"
+                android:visibility="gone"
+                android:id="@+id/data_flag"
+                android:src="@drawable/baseline_instant_graph_24"
+                android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/trip_time"
                 android:layout_width="wrap_content"
@@ -64,7 +72,7 @@
                 android:drawableLeft="@drawable/time_elapsed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
-                android:text="2:16 h"
+                android:text="0:00 h"
                 android:textSize="20sp"
                 app:drawableTint="@color/white" />
 
@@ -75,7 +83,7 @@
                 android:drawableLeft="@drawable/distance_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
-                android:text="Trip 68 km"
+                android:text="Not started"
                 android:textSize="20sp"
                 app:drawableTint="@color/white" />
 
@@ -86,7 +94,7 @@
                 android:drawableLeft="@drawable/baseline_speed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
-                android:text="avg. 50 km/h"
+                android:text="No info yet"
                 android:textSize="20sp"
                 app:drawableTint="@color/white" />
 
@@ -139,19 +147,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="15.0 km/l"
+                android:text="0.0 km/l"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/instant_consumption"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="start"
                 android:drawableLeft="@drawable/baseline_instant_graph_24"
                 android:drawablePadding="8dp"
                 android:paddingVertical="8dp"
-                android:text="Instant 15.0 km/l"
+                android:text="--Instant data--"
                 android:textSize="20sp"
                 app:drawableTint="@color/white" />
 
@@ -159,9 +167,10 @@
                 android:id="@+id/total_consumption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="start"
                 android:drawablePadding="8dp"
-                android:text="consumed 0.99 L"
+                android:singleLine="true"
+                android:text="Total consumption"
                 android:textSize="20sp"
                 app:drawableLeftCompat="@drawable/consumption_24"
                 app:drawableTint="@color/white" />
