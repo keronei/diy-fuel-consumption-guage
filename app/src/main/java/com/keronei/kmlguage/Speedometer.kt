@@ -4,13 +4,12 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.core.content.res.ResourcesCompat
-//import androidx.core.animation.doOnEnd
+//import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.keronei.kmlgauge.R
 import kotlin.math.PI
 import kotlin.math.cos
@@ -272,6 +271,7 @@ class Speedometer @JvmOverloads constructor(
             }
         } catch (e: Exception) {
             e.printStackTrace()
+           // FirebaseCrashlytics.getInstance().recordException(e)
         } finally {
             typedArray.recycle()
         }

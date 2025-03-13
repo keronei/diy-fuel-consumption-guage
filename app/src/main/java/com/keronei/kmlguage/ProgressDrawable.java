@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 class ProgressDrawable extends Drawable {
-    private static final int NUM_RECTS = 25;
+    private static final int NUM_RECTS = 82;
     Paint mPaint = new Paint();
 
     Paint textPaint = new Paint();
@@ -24,7 +24,7 @@ class ProgressDrawable extends Drawable {
     public void draw(Canvas canvas) {
         int cali = 0;
         textPaint.setColor(0xffbbbbbb);
-        textPaint.setTextSize(25);
+        textPaint.setTextSize(40);
 
         int level = getLevel();
         Rect b = getBounds();
@@ -33,16 +33,16 @@ class ProgressDrawable extends Drawable {
         for (int i = 0; i < NUM_RECTS; i++) {
 
             float left = width * i / NUM_RECTS;
-            float right = left + 0.9f * width / NUM_RECTS;
+            float right = left + 0.9f * (width / NUM_RECTS);
             mPaint.setColor((i + 1) * 10000 / NUM_RECTS <= level ? 0xFF00FF00 : 0xff888888);
-            canvas.drawRect(left, 0, right, b.bottom - 140, mPaint);
+            canvas.drawRect(left, 0, right, b.bottom - 90, mPaint);
 
-            if (i % 3 == 0) {
-                canvas.drawText(String.valueOf(cali), left + 2f, b.bottom - 106, textPaint);
+            if ((i + 1) % 10 == 0) {
+                canvas.drawText(String.valueOf(cali + 1), left - 1f, b.bottom - 56, textPaint);
                 cali += 1;
 
-                if (i == 24) {
-                    canvas.drawText("x 1000", left - 56f, b.bottom - 80, textPaint);
+                if (i == 70) {
+                    canvas.drawText("x 1000", left - 30f, b.bottom - 20, textPaint);
                 }
 
             }
