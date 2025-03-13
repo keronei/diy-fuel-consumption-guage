@@ -1,12 +1,12 @@
 package com.keronei.kmlguage
 
 import android.util.Log
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.util.SerialInputOutputManager
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlin.random.Random
 
 object USBDataHandler : SerialInputOutputManager.Listener {
     var usbSerialPort: UsbSerialPort? = null
@@ -28,9 +28,10 @@ object USBDataHandler : SerialInputOutputManager.Listener {
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun onNewData(data: ByteArray?) {
         val receivedString = java.lang.String(data, Charsets.UTF_8)
-        Log.d("Arduino-P", "$receivedString")
         try {
             val receivedData = receivedString.split(",").toList()
+
+            Log.d("OnData", receivedData.toString())
 
             val crunchedData = EngineData(
                 rpm = receivedData[0].trim().toDouble().toInt(),
@@ -52,6 +53,7 @@ object USBDataHandler : SerialInputOutputManager.Listener {
             _data.value = crunchedData
 
         } catch (exception: Exception) {
+            FirebaseCrashlytics.getInstance().recordException(exception)
             exception.printStackTrace()
         }
     }
@@ -65,6 +67,9 @@ object USBDataHandler : SerialInputOutputManager.Listener {
 
     override fun onRunError(e: Exception?) {
         Log.d("Arduino-P", "Error registered")
+        if (e != null) {
+             FirebaseCrashlytics.getInstance().recordException(e)
+        }
         e?.printStackTrace()
     }
 }

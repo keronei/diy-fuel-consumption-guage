@@ -14,6 +14,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.abs
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,9 +69,10 @@ class MainActivity : AppCompatActivity() {
         rpmGuage?.progressDrawable = d
 
         rpmGuage?.let { bar ->
-            bind.hostRpm.addView(bar, 700, 160)
+            bind.hostRpm.addView(bar, 850, 170)
         }
 
+        rpmGuage?.max = 8000
 
         setContentView(bind.root)
         gestureDetector = GestureDetector(this, SwipeGestureListener())
@@ -111,10 +114,10 @@ class MainActivity : AppCompatActivity() {
             USBDataHandler.incomingData.collectLatest { data ->
                 withContext(Dispatchers.Main) {
                     data?.let {
-                        val finalRpm = (data.rpm.toDouble() / 8000.0) * 100
+                        bind.dataFlag.visibility = View.VISIBLE
 
-                        rpmGuage?.progress = finalRpm.toInt()
-                        bind.currentSpeed.text = data.instantSpeed.toString()
+                        rpmGuage?.progress = data.rpm
+                        bind.currentSpeed.text = "${data.instantSpeed}"
 
                         if (data.instantSpeed == 0) {
                             bind.instantConsumption.text =
@@ -153,28 +156,16 @@ class MainActivity : AppCompatActivity() {
                             if (data.currentConsumptionPerKm == 999999.0) {
                                 "***"
                             } else {
-                                "${data.currentConsumptionPerKm} Km/l"
+                                "${data.currentConsumptionPerKm} Km/L"
                             }
                         bind.totalConsumption.text = "Consumed ${data.currentConsumedLitres} L"
+
+                        bind.dataFlag.visibility = View.GONE
                     }
                 }
             }
         }
     }
-
-
-//    @SuppressLint("MissingPermission")
-//    private fun listenToLocationUpdates() {
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, {
-//            location ->
-//            val speed = location.speed
-//            val kph = speed * 3.6f
-//
-//            Log.d("LocationSpeed", "$kph")
-//
-//            bind.currentSpeed.text = kph.roundToInt().toString()
-//        })
-//    }
 
     private fun initiateUsb() {
         if (USBDataHandler.ioManager != null) {
@@ -247,7 +238,7 @@ class MainActivity : AppCompatActivity() {
             val swipeThreshold = 100
             val swipeVelocityThreshold = 100
 
-            return if (Math.abs(diffX) > swipeThreshold && Math.abs(velocityX) > swipeVelocityThreshold) {
+            return if (abs(diffX) > swipeThreshold && abs(velocityX) > swipeVelocityThreshold) {
                 if (diffX > 0) {
                     Toast.makeText(this@MainActivity, "Swiped Right", Toast.LENGTH_SHORT).show()
                 } else {

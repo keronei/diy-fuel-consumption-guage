@@ -1,7 +1,6 @@
 package com.keronei.kmlguage
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
@@ -69,7 +68,7 @@ class GuagesScreenActivity : AppCompatActivity() {
             USBDataHandler.incomingData.collectLatest { data ->
                 withContext(Dispatchers.Main) {
                     data?.let {
-                        binding.currentSpeed.setSpeedAndRPM(data.instantSpeed, data.rpm, 300)
+                        binding.currentSpeed.setSpeedAndRPM(data.instantSpeed, data.rpm, 5)
 
                         if (data.instantSpeed == 0) {
                             binding.instantLkm.text =

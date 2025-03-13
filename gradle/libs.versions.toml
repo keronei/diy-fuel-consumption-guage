@@ -1,6 +1,7 @@
 [versions]
 agp = "8.7.2"
 arduino = "3.8.1"
+googleServices = "4.4.2"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -11,10 +12,15 @@ material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
 usbserial = "6.0.6"
+gservices = "4.4.2"
+firebasebom = "33.10.0"
+firebaseCrashlyticsKtx = "19.4.1"
+crashlytics="2.9.9"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 arduino = { module = "com.github.mik3y:usb-serial-for-android", version.ref = "arduino" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -23,8 +29,15 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 usbserial = { module = "com.github.felHR85:UsbSerial", version.ref = "usbserial" }
+firebase-bom = {module = "com.google.firebase:firebase-bom", version.ref = "firebasebom"}
+firebase-crashlytics = { group = "com.google.firebase", module = "com.google.firebase:firebase-crashlytics" }
+firebase-analytics = {group = "com.google.firebase",  module = "com.google.firebase:firebase-analytics" }
+firebase-crashlytics-ktx = { group = "com.google.firebase", name = "firebase-crashlytics-ktx", version.ref = "firebaseCrashlyticsKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "gservices"}
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref="crashlytics" }
+
 
