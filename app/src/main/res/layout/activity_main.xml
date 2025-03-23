@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:text="Km/h"
+            android:fontFamily="@font/akando"
             android:textSize="22sp" />
     </FrameLayout>
 
@@ -59,10 +60,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                app:tint="#12D41C"
-                android:visibility="gone"
+                app:tint="#F40B2E"
+                android:alpha="0"
                 android:id="@+id/data_flag"
-                android:src="@drawable/baseline_instant_graph_24"
+                android:src="@drawable/plug_bolt_24"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -72,8 +73,9 @@
                 android:drawableLeft="@drawable/time_elapsed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
+                android:fontFamily="@font/akando"
                 android:text="0:00 h"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:drawableTint="@color/white" />
 
             <TextView
@@ -83,8 +85,9 @@
                 android:drawableLeft="@drawable/distance_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
+                android:fontFamily="@font/akando"
                 android:text="Not started"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:drawableTint="@color/white" />
 
             <TextView
@@ -94,8 +97,9 @@
                 android:drawableLeft="@drawable/baseline_speed_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
+                android:fontFamily="@font/akando"
                 android:text="No info yet"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:drawableTint="@color/white" />
 
             <TextView
@@ -104,7 +108,8 @@
                 android:drawablePadding="8dp"
                 android:padding="8dp"
                 android:text="Since start"
-                android:textSize="20sp" />
+                android:fontFamily="@font/akando"
+                android:textSize="25sp" />
         </LinearLayout>
 
 
@@ -122,8 +127,9 @@
                 android:drawablePadding="8dp"
                 android:padding="8dp"
                 android:textStyle="italic"
-                android:text="17.97L on tank - 245 km available"
-                android:textSize="14sp" />
+                android:fontFamily="@font/akando"
+                android:text="Waiting for tank balance"
+                android:textSize="18sp" />
         </LinearLayout>
 
 
@@ -133,7 +139,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:orientation="vertical"
-            android:padding="14dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -147,7 +153,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="0.0 km/l"
+                android:text="0.0 Km/L"
+                android:paddingBottom="8dp"
+                android:fontFamily="@font/akando"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
@@ -159,8 +167,10 @@
                 android:drawableLeft="@drawable/baseline_instant_graph_24"
                 android:drawablePadding="8dp"
                 android:paddingVertical="8dp"
+                android:fontFamily="@font/akando"
                 android:text="--Instant data--"
-                android:textSize="20sp"
+                android:singleLine="true"
+                android:textSize="25sp"
                 app:drawableTint="@color/white" />
 
             <TextView
@@ -170,8 +180,10 @@
                 android:layout_gravity="start"
                 android:drawablePadding="8dp"
                 android:singleLine="true"
+                android:paddingVertical="8dp"
                 android:text="Total consumption"
-                android:textSize="20sp"
+                android:fontFamily="@font/akando"
+                android:textSize="25sp"
                 app:drawableLeftCompat="@drawable/consumption_24"
                 app:drawableTint="@color/white" />
 

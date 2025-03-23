@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.keronei.kmlguage"
-        minSdk = 16
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -48,15 +48,17 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(project(":usbSerialForAndroid"))
-    implementation("com.google.firebase:firebase-analytics:17.0.0")
-    implementation("com.google.firebase:firebase-crashlytics:17.0.0")
+    implementation(platform(libs.firebase.bom))
+    //implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics.ktx)
     // implementation(libs.androidx.activity)
     // implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     // androidTestImplementation(libs.androidx.junit)
     // androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
 }

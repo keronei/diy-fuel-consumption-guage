@@ -1,14 +1,29 @@
 package com.keronei.kmlguage;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import androidx.core.content.res.ResourcesCompat;
+
+import com.keronei.kmlgauge.R;
+
+import java.lang.ref.WeakReference;
+
 class ProgressDrawable extends Drawable {
+
+    private WeakReference<Context> innerContext;
+
+    public ProgressDrawable(Context context) {
+        this.innerContext = new WeakReference<>(context);
+    }
+
     private static final int NUM_RECTS = 82;
     Paint mPaint = new Paint();
 
@@ -22,6 +37,9 @@ class ProgressDrawable extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
+        Typeface okandoFont = ResourcesCompat.getFont(this.innerContext.get(), R.font.akando);
+
+        textPaint.setTypeface(okandoFont);
         int cali = 0;
         textPaint.setColor(0xffbbbbbb);
         textPaint.setTextSize(40);
@@ -48,8 +66,6 @@ class ProgressDrawable extends Drawable {
             }
 
         }
-
-
     }
 
     @Override

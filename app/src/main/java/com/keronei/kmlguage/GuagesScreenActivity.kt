@@ -1,11 +1,9 @@
 package com.keronei.kmlguage
 
-import android.annotation.SuppressLint
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -15,12 +13,10 @@ import com.keronei.kmlgauge.R
 import com.keronei.kmlgauge.databinding.ActivityGuagesScreenBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.math.roundToInt
 
 class GuagesScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivityGuagesScreenBinding
@@ -48,6 +44,9 @@ class GuagesScreenActivity : AppCompatActivity() {
     val bind: ActivityGuagesScreenBinding get() = binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
         binding = ActivityGuagesScreenBinding.inflate(layoutInflater)
 
         count = 0  // Reset count
@@ -62,27 +61,26 @@ class GuagesScreenActivity : AppCompatActivity() {
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     private fun handleEngineData() {
         ioJob.launch {
             USBDataHandler.incomingData.collectLatest { data ->
                 withContext(Dispatchers.Main) {
                     data?.let {
-                        binding.currentSpeed.setSpeedAndRPM(data.instantSpeed, data.rpm, 5)
+                        binding.currentSpeed.setSpeedAndRPM(data.instantSpeed, data.rpm, 100)
 
                         if (data.instantSpeed == 0) {
                             binding.instantLkm.text =
-                                if (data.currentConsumptionPerKm == 999999.0) {
+                                if (data.instantConsumptionPerHour == 999999.0) {
                                     binding.instantUnit.visibility = View.GONE
                                     "***"
                                 } else {
                                     binding.instantUnit.visibility = View.VISIBLE
                                     binding.instantUnit.text = "L/H"
-                                    data.instantConsumptionPerHour.toString()
+                                    "${data.instantConsumptionPerHour}"
                                 }
                         } else {
                             binding.instantLkm.text =
-                                if (data.currentConsumptionPerKm == 999999.0) {
+                                if (data.instantConsumptionPerKm == 999999.0) {
                                     binding.instantUnit.visibility = View.GONE
 
                                     "***"
@@ -91,7 +89,7 @@ class GuagesScreenActivity : AppCompatActivity() {
 
                                     binding.instantUnit.text = "Km/L"
 
-                                    data.instantConsumptionPerKm.toString()
+                                    "${data.instantConsumptionPerKm}"
                                 }
                         }
 
@@ -103,7 +101,7 @@ class GuagesScreenActivity : AppCompatActivity() {
                             "${data.currentConsumptionPerKm}"
                         }
 
-                        binding.remainingInTank.text = data.approximateRemainingTank.toString()
+                        binding.remainingInTank.text = "${data.approximateRemainingTank}"
 
                         binding.remainingDistanceInTank.text =
                             if (data.currentConsumptionPerKm == 999999.0) {
@@ -121,18 +119,6 @@ class GuagesScreenActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun listenToLocationUpdates() {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, { location ->
-            val speed = location.speed
-            val kph = speed * 3.6f
-
-            Log.d("LocationSpeed", "$kph")
-
-            bind.currentSpeed.setSpeedAndRPM(kph.roundToInt(), 0, 500)
-        })
     }
 
     override fun onPause() {

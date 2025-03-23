@@ -18,6 +18,10 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
 import com.keronei.kmlgauge.BuildConfig
@@ -25,8 +29,8 @@ import com.keronei.kmlgauge.R
 import com.keronei.kmlgauge.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var locationManager: LocationManager
 
-    private var ioJob = CoroutineScope(Dispatchers.IO + Job())
+    private var ioJob = CoroutineScope(Dispatchers.IO + SupervisorJob())
+
+    private val eventViewModel: EventViewModel by lazy { (application as GuageApp).eventViewModel }
 
     val bind get() = binding!!
 
@@ -62,10 +68,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         rpmGuage = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
-        val d: Drawable = ProgressDrawable()
+        val d: Drawable = ProgressDrawable(this)
         rpmGuage?.progressDrawable = d
 
         rpmGuage?.let { bar ->
@@ -77,15 +88,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(bind.root)
         gestureDetector = GestureDetector(this, SwipeGestureListener())
 
-        initiateUsb()
 
         bind.main.setOnTouchListener { _, event ->
             gestureDetector.onTouchEvent(event)
         }
 
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-
-        //listenToLocationUpdates()
 
         broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
@@ -105,16 +113,50 @@ class MainActivity : AppCompatActivity() {
             initiateUsb()
         }
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                eventViewModel.eventFlow.collect { event ->
+                    if (event == UsbManager.ACTION_USB_DEVICE_ATTACHED) {
+                        initiateUsb()
+
+                        showEventMessage("Starting handler")
+                    } else if (event == UsbManager.ACTION_USB_DEVICE_DETACHED) {
+                        USBDataHandler.ioManager?.stop()
+
+                        showEventMessage(
+                            "Stopping handler"
+                        )
+                    }
+                }
+            }
+        }
+
         handleEngineData()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    private suspend fun showEventMessage(message: String) {
+        withContext(Dispatchers.Main) {
+            Toast.makeText(
+                this@MainActivity,
+                message,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun animateDataIndicator() {
+        bind.dataFlag.alpha = 1f
+        bind.dataFlag.animate().alpha(0f).setDuration(300).start()
+    }
+
     private fun handleEngineData() {
         ioJob.launch {
             USBDataHandler.incomingData.collectLatest { data ->
                 withContext(Dispatchers.Main) {
+                    Log.d("Received", "$data")
+
                     data?.let {
-                        bind.dataFlag.visibility = View.VISIBLE
+                        animateDataIndicator()
 
                         rpmGuage?.progress = data.rpm
                         bind.currentSpeed.text = "${data.instantSpeed}"
@@ -124,14 +166,14 @@ class MainActivity : AppCompatActivity() {
                                 if (data.currentConsumptionPerKm == 999999.0) {
                                     "***"
                                 } else {
-                                    "Instant ${data.instantConsumptionPerHour} L/H"
+                                    "Inst. ${data.instantConsumptionPerHour} L/H"
                                 }
                         } else {
                             bind.instantConsumption.text =
                                 if (data.currentConsumptionPerKm == 999999.0) {
                                     "***"
                                 } else {
-                                    "Instant ${data.instantConsumptionPerHour} Km/L"
+                                    "Inst. ${data.instantConsumptionPerKm} Km/L"
                                 }
                         }
 
@@ -140,27 +182,34 @@ class MainActivity : AppCompatActivity() {
                             (data.approximateRemainingTank * data.currentConsumptionPerKm)
                         )
 
-                        val remainingDistanceText = if(data.currentConsumptionPerKm == 999999.0){
-                            "No consumption info"
-                        } else {
-                            "$remainingDistance Km available"
-                        }
+                        val remainingDistanceText =
+                            if (data.currentConsumptionPerKm == 999999.0) {
+                                "No consumption info"
+                            } else {
+                                "$remainingDistance Km available"
+                            }
 
                         bind.remainingOnTank.text =
                             "${data.approximateRemainingTank}L on tank - $remainingDistanceText"
 
-                        bind.tripTime.text = "${data.currentTripTime} h"
+                        bind.tripTime.text = "${data.currentTripTime.replace(".", ":")} h"
                         bind.averageSpeed.text = "avg. ${data.currentAverageSpeed} Km/h"
                         bind.tripDistance.text = "Trip ${data.currentTripDistance} Km"
                         bind.currentConsumption.text =
                             if (data.currentConsumptionPerKm == 999999.0) {
-                                "***"
+                                if (data.instantSpeed == 0) {
+                                    if (data.rpm == 0) {
+                                        "Engine Off"
+                                    } else {
+                                        "Idling"
+                                    }
+                                } else {
+                                    "***"
+                                }
                             } else {
                                 "${data.currentConsumptionPerKm} Km/L"
                             }
                         bind.totalConsumption.text = "Consumed ${data.currentConsumedLitres} L"
-
-                        bind.dataFlag.visibility = View.GONE
                     }
                 }
             }
@@ -207,12 +256,17 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        port = firstAvailableDriver.ports.first()
-        port?.open(connection)
-        port?.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
+        try {
+            port = firstAvailableDriver.ports.first()
+            port?.open(connection)
+            port?.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
 
-        port?.let {
-            USBDataHandler.usbSerialPort = it
+            port?.let {
+                USBDataHandler.usbSerialPort = it
+            }
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+            FirebaseCrashlytics.getInstance().recordException(exception)
         }
 
         USBDataHandler.initializeHandler()
