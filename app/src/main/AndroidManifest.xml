@@ -27,6 +27,7 @@
         <activity
             android:name="com.keronei.kmlguage.GuagesScreenActivity"
             android:exported="false"
+            android:launchMode="singleTask"
             android:screenOrientation="landscape" />
         <activity
             android:name="com.keronei.kmlguage.MainActivity"
