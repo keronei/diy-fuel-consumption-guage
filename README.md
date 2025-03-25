@@ -8,7 +8,7 @@ attached to an Arduino.
  - The data is also sent via serial at 4 updates per second which is received and displayed by the Android device.
 
 ### Screenshot from Android Display
-<img src="/images/guage.png" width="380" height="200" alt="Screenshot from Android with guage"/> &nbsp; <img src="/images/linear.png" width="380" height="200" alt="Screenshot from Android with linear RPM and detailed trip info"/>
+<img src="/images/guage.png" width="360" height="200" alt="Screenshot from Android with guage"/> &nbsp; <img src="/images/linear.png" width="360" height="200" alt="Screenshot from Android with linear RPM and detailed trip info"/>
 
 ### What currently works
 - [x] Instant KM/L consumption (inaccurate)
@@ -21,7 +21,7 @@ attached to an Arduino.
 
 ### Circuitry
 <img src="/images/t2_schematic_v16.jpg" width="500" height="323" alt="The circuit"/>
-This is the original template from MPGuino project, which is the [Wiseman's variant](http://mpguino.wiseman.ee/eng/mpguino), [Weeko](https:weego.com). 
+This is the original template from MPGuino project, which is the [Wiseman's variant](http://mpguino.wiseman.ee/eng/mpguino). 
 
 <img src="/images/level_sender.png" width="500" height="260" alt="The circuit"/>
 The fuel tank reader, my tank is very wide and makes it hard to guage the amount remaining, taken from [Caterham & Lotus 7 Club](https://www.caterhamlotus7.club/forums/topic/272927-fuel-level-sender-how-to-convert-resistance-to-a-0-5v-signal/)
