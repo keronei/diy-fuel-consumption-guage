@@ -4,7 +4,6 @@ import android.util.Log
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.util.SerialInputOutputManager
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -13,25 +12,21 @@ object USBDataHandler : SerialInputOutputManager.Listener {
 
     var ioManager: SerialInputOutputManager? = null
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     private val _data: MutableStateFlow<EngineData?> = MutableStateFlow(null)
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     val incomingData: StateFlow<EngineData?> = _data
 
     fun initializeHandler() {
         ioManager = usbSerialPort?.let { po -> SerialInputOutputManager(po, this) }
-        ioManager?.setReadTimeout(1000)
         ioManager?.start()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onNewData(data: ByteArray?) {
         val receivedString = java.lang.String(data, Charsets.UTF_8)
         try {
             val receivedData = receivedString.split(",").toList()
 
-            Log.d("OnData", receivedData.toString())
+            Log.d("Incoming", "$receivedData")
 
             val crunchedData = EngineData(
                 rpm = receivedData[0].trim().toDouble().toInt(),
@@ -42,11 +37,7 @@ object USBDataHandler : SerialInputOutputManager.Listener {
                 currentConsumedLitres = receivedData[5].trim().toDouble(),
                 currentTripDistance = receivedData[6].trim().toDouble(),
                 approximateRemainingTank = receivedData[7].trim().toDouble(),
-                currentTripTime = if (receivedData[8].trim() == "0.00") {
-                    "0:00"
-                } else {
-                    parseTripTime(receivedData[8].trim().toLong())
-                },
+                currentTripTime = receivedData[8].trim(),
                 currentAverageSpeed = receivedData[9].trim().toDouble()
             )
 
@@ -58,10 +49,10 @@ object USBDataHandler : SerialInputOutputManager.Listener {
         }
     }
 
-    private fun parseTripTime(encodedTime: Long): String {
+    fun parseTripTime(encodedTime: Long): String {
         val hours = encodedTime / 100  // Extract hours
         val minutes = encodedTime % 100 // Extract minutes
-        return String.format("%02d:%02d", hours, minutes) // Format as HH:MM
+        return String.format("%03d:%02d", hours, minutes) // Format as HH:MM
     }
 
 
