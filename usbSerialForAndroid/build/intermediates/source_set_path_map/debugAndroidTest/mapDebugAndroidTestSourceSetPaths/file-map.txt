@@ -1,5 +1,5 @@
-com.hoho.android.usbserial.test.usbSerialForAndroid-core-1.5.0-0 /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/res
-com.hoho.android.usbserial.test.usbSerialForAndroid-annotation-experimental-1.1.0-1 /Users/keroneilincoln/.gradle/caches/8.9/transforms/a9931a2ec0e10ccab939cc894eb7bf3a/transformed/annotation-experimental-1.1.0/res
+com.hoho.android.usbserial.test.usbSerialForAndroid-core-1.5.0-0 /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/res
+com.hoho.android.usbserial.test.usbSerialForAndroid-annotation-experimental-1.1.0-1 /Users/keroneilincoln/.gradle/caches/8.9/transforms/c510437c7ee3b41ae78d45b05a309277/transformed/annotation-experimental-1.1.0/res
 com.hoho.android.usbserial.test.usbSerialForAndroid-androidTest-2 /Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/generated/res/resValues/androidTest/debug
 com.hoho.android.usbserial.test.usbSerialForAndroid-mergeDebugAndroidTestResources-3 /Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
 com.hoho.android.usbserial.test.usbSerialForAndroid-mergeDebugAndroidTestResources-4 /Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir

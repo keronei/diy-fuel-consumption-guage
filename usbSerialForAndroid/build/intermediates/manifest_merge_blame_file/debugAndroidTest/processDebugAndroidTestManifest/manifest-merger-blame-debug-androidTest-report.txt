@@ -5,100 +5,100 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-7-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:7:5-9:41
+7-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:7:5-9:41
 8        android:minSdkVersion="16"
-8-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:8:9-35
+8-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:8:9-35
 9        android:targetSdkVersion="34" />
-9-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:9:9-38
+9-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:9:9-38
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:11:5-67
-11-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:11:22-64
+11-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:11:5-67
+11-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:11:22-64
 12
 13    <instrumentation
-13-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:13:5-18:67
+13-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:13:5-18:67
 14        android:name="androidx.test.runner.AndroidJUnitRunner"
-14-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:14:9-63
+14-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:14:9-63
 15        android:functionalTest="false"
-15-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:15:9-39
+15-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:15:9-39
 16        android:handleProfiling="false"
-16-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:16:9-40
+16-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:16:9-40
 17        android:label="Tests for com.hoho.android.usbserial.test"
-17-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:17:9-66
+17-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:17:9-66
 18        android:targetPackage="com.hoho.android.usbserial.test" />
-18-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:18:9-64
+18-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:18:9-64
 19
 20    <uses-permission android:name="android.permission.REORDER_TASKS" />
-20-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:24:5-72
-20-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:24:22-69
+20-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:24:5-72
+20-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:24:22-69
 21
 22    <queries>
-22-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:24:5-28:15
+22-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:24:5-28:15
 23        <package android:name="androidx.test.orchestrator" />
-23-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:25:9-62
-23-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:25:18-59
+23-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:25:9-62
+23-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:25:18-59
 24        <package android:name="androidx.test.services" />
-24-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:26:9-58
-24-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:26:18-55
+24-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:26:9-58
+24-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:26:18-55
 25        <package android:name="com.google.android.apps.common.testing.services" />
-25-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:27:9-83
-25-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/f15bbc7579aa79aee4b332505a908d53/transformed/runner-1.5.2/AndroidManifest.xml:27:18-80
+25-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:27:9-83
+25-->[androidx.test:runner:1.5.2] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3bf916402a051de21bf0b67e1edabac4/transformed/runner-1.5.2/AndroidManifest.xml:27:18-80
 26    </queries>
 27
 28    <application
-28-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:20:5-22:19
+28-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:20:5-22:19
 29        android:debuggable="true"
 30        android:extractNativeLibs="true" >
 31        <uses-library android:name="android.test.runner" />
-31-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:21:9-60
-31-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest4826616019768376601.xml:21:23-57
+31-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:21:9-60
+31-->/Users/keroneilincoln/Projects/diy-fuel-consumption-guage/usbSerialForAndroid/build/intermediates/tmp/manifest/androidTest/debug/tempFile2ProcessTestManifest397483964350336422.xml:21:23-57
 32
 33        <activity
-33-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:27:9-34:20
+33-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:27:9-34:20
 34            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
-34-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:28:13-99
+34-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:28:13-99
 35            android:exported="true"
-35-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:29:13-36
+35-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:29:13-36
 36            android:theme="@style/WhiteBackgroundTheme" >
-36-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:30:13-56
+36-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:30:13-56
 37            <intent-filter android:priority="-100" >
-37-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
-37-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
+37-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
+37-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
 38                <category android:name="android.intent.category.LAUNCHER" />
-38-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
-38-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
+38-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
+38-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
 39            </intent-filter>
 40        </activity>
 41        <activity
-41-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:35:9-42:20
+41-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:35:9-42:20
 42            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
-42-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:36:13-95
+42-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:36:13-95
 43            android:exported="true"
-43-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:37:13-36
+43-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:37:13-36
 44            android:theme="@style/WhiteBackgroundTheme" >
-44-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:38:13-56
+44-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:38:13-56
 45            <intent-filter android:priority="-100" >
-45-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
-45-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
+45-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
+45-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
 46                <category android:name="android.intent.category.LAUNCHER" />
-46-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
-46-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
+46-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
+46-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
 47            </intent-filter>
 48        </activity>
 49        <activity
-49-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:43:9-50:20
+49-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:43:9-50:20
 50            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
-50-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:44:13-103
+50-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:44:13-103
 51            android:exported="true"
-51-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:45:13-36
+51-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:45:13-36
 52            android:theme="@style/WhiteBackgroundDialogTheme" >
-52-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:46:13-62
+52-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:46:13-62
 53            <intent-filter android:priority="-100" >
-53-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
-53-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
+53-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:13-33:29
+53-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:31:28-51
 54                <category android:name="android.intent.category.LAUNCHER" />
-54-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
-54-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
+54-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:17-77
+54-->[androidx.test:core:1.5.0] /Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/AndroidManifest.xml:32:27-74
 55            </intent-filter>
 56        </activity>
 57    </application>

@@ -4,7 +4,7 @@
             "outputFile": "com.hoho.android.usbserial.test.usbSerialForAndroid-mergeDebugAndroidTestResources-3:/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/keroneilincoln/.gradle/caches/8.9/transforms/3461e1ce5eb1a15c28447ecb0f5de286/transformed/core-1.5.0/res/values/values.xml",
+                    "source": "/Users/keroneilincoln/.gradle/caches/8.9/transforms/14cf30c1134dde4c180b9b515a9a9abf/transformed/core-1.5.0/res/values/values.xml",
                     "from": {
                         "startLines": "4,11",
                         "startColumns": "0,0",
