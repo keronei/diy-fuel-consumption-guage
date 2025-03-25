@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "659206920454",
+    "project_id": "rola-dash",
+    "storage_bucket": "rola-dash.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659206920454:android:81ff2c31317c7617d0a687",
+        "android_client_info": {
+          "package_name": "com.keronei.kmlguage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx8bKfyITy4N186RZmIhFQV87YIKc6U7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
