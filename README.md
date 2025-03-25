@@ -8,20 +8,21 @@ attached to an Arduino.
  - The data is also sent via serial at 4 updates per second which is received and displayed by the Android device.
 
 ### Screenshot from Android Display
-<img src="/images/guage.png" width="460" height="200" alt="Screenshot from Android with guage"/> &npsb; <img src="/images/linear.png" width="460" height="200" alt="Screenshot from Android with linear RPM and detailed trip info"/>
+<img src="/images/guage.png" width="400" height="200" alt="Screenshot from Android with guage"/> &nbsp; <img src="/images/linear.png" width="400" height="200" alt="Screenshot from Android with linear RPM and detailed trip info"/>
 
 ### What currently works
-- [*] Instant KM/L consumption
-- [*] RPM
-- [*] Speed
-- [*] Trip aggregates(avg speed, trip time, distance)
-- [-] Fuel tank balance(used for remaining distance approximation)
-- [-] Consumption graph 
+- [x] Instant KM/L consumption
+- [x] RPM
+- [x] Speed
+- [x] Trip aggregates(avg speed, trip time, distance)
+- [ ] Calibration - currently amiss by almost a litre.
+- [ ] Fuel tank balance(used for remaining distance approximation)
+- [ ] Consumption graph 
 
 ### Circuitry
 <img src="/images/t2_schematic_v16.jpg" width="500" height="323" alt="The circuit"/>
 This is the original template from MPGuino project, which is the [Wiseman's variant](http://mpguino.wiseman.ee/eng/mpguino). 
 
-<img src="/images/level_sender.png" width="500" height="240" alt="The circuit"/>
+<img src="/images/level_sender.png" width="500" height="200" alt="The circuit"/>
 The fuel tank reader, my tank is very wide and makes it hard to guage the amount remaining, taken from [Caterham & Lotus 7 Club](https://www.caterhamlotus7.club/forums/topic/272927-fuel-level-sender-how-to-convert-resistance-to-a-0-5v-signal/)
 
