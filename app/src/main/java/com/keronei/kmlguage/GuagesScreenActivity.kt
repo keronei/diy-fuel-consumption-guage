@@ -121,6 +121,15 @@ class GuagesScreenActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val layoutParams = window.attributes
+
+        layoutParams.screenBrightness = 0.4f
+        window.attributes = layoutParams
+    }
+
     override fun onPause() {
         super.onPause()
 

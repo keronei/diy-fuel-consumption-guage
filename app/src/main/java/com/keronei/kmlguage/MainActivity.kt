@@ -4,6 +4,8 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.hardware.usb.UsbManager
 import android.location.LocationManager
@@ -68,11 +70,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                )
-
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         rpmGuage = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
@@ -132,6 +129,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         handleEngineData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+
+        val layoutParams = window.attributes
+
+        layoutParams.screenBrightness = 0.4f
+        window.attributes = layoutParams
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if (newConfig.orientation != Configuration.ORIENTATION_LANDSCAPE){
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
     }
 
     private suspend fun showEventMessage(message: String) {
